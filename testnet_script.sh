@@ -124,8 +124,6 @@ sudo chmod +x fetch-params.sh
 sudo bash fetch-params.sh
 echo "Done fetching chain params"
 
-echo "Please enter the su username when prompted"
-read -p "Enter username: " $user
 echo "Creating system service file...."
  cat << EOF > /etc/systemd/system/$COIN_NAME.service
 [Unit]
