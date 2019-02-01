@@ -3,8 +3,8 @@
 COIN_NAME='ZELCASH' #no spaces
 
 #wallet information
-WALLET_DOWNLOAD='https://www.dropbox.com/s/raw/vle3slcwfsmrh3w/zelnodetestnet-linux.tar.gz'
-WALLET_TAR_FILE='zelnodetestnet-linux.tar.gz'
+WALLET_DOWNLOAD='https://www.dropbox.com/s/raw/5493gbfivhko9pm/zelnodetestnet-linux.zip'
+WALLET_TAR_FILE='zelnodetestnet-linux.zip'
 ZIPTAR='unzip' #can be either unzip or tar -xfzg
 EXTRACT_DIR='' #not always necessary, can be blank if zip/tar file has no subdirectories
 CONFIG_FILE='zelcash.conf'
@@ -122,15 +122,15 @@ sudo bash fetch-params.sh
 echo "Done fetching chain params"
 
 echo "Please enter the su username when prompted"
-read -p "Enter username: $user
+read -p "Enter username: " $user
 echo "Creating system service file...."
  cat << EOF > /etc/systemd/system/$COIN_NAME.service
 [Unit]
 Description=$COIN_NAME service
 After=network.target
 [Service]
-User=root
-Group=root
+User=$user
+Group=$user
 Type=forking
 #PIDFile=~/.zelcash/$COIN_NAME.pid
 ExecStart=$COIN_PATH/$COIN_DAEMON -daemon -conf=~/.zelcash/$CONFIG_FILE -datadir=~/.zelcash/
