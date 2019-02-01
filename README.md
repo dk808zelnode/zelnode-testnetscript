@@ -1,4 +1,4 @@
-# Zelnode Install Script
+# Zelnode Testnet Install Script
 
 This was tested on Ubuntu 16.04
 Please choose the right requirements for the Zelnode Tier you will be in.
