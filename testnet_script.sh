@@ -20,7 +20,9 @@ ADDNODE5='46.36.41.83'
 ADDNODE6='165.227.156.125'
 PORT='26125'
 RPCPORT='26124'
-
+echo "Enter su username"
+username=$(whiptail --inputbox "Enter username" 10 30 3>&1 1>&2 2>&3)
+USERNAME=$username
 
 FETCHPARAMS='https://raw.githubusercontent.com/dk808/zelnode_script/master/fetch-params.sh'
 
@@ -130,8 +132,8 @@ echo "Creating system service file...."
 Description=$COIN_NAME service
 After=network.target
 [Service]
-User=$user
-Group=$user
+User=$USERNAME
+Group=$USERNAME
 Type=forking
 #PIDFile=~/.zelcash/$COIN_NAME.pid
 ExecStart=$COIN_PATH/$COIN_DAEMON -daemon -conf=~/.zelcash/$CONFIG_FILE -datadir=~/.zelcash/
