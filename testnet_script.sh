@@ -203,7 +203,6 @@ addnode=$ADDNODE3
 addnode=$ADDNODE4
 addnode=$ADDNODE5
 addnode=$ADDNODE6
-addnode=$ADDNODE7
 maxconnections=256
 EOF
 
