@@ -21,7 +21,7 @@ ADDNODE6='165.227.156.125'
 PORT='26125'
 RPCPORT='26124'
 echo "Enter su username"
-username=$(whiptail --inputbox "Enter username" 10 30 3>&1 1>&2 2>&3)
+username=$(whiptail --inputbox "Enter su username" 10 30 3>&1 1>&2 2>&3)
 USERNAME=$username
 
 FETCHPARAMS='https://raw.githubusercontent.com/dk808/zelnode_script/master/fetch-params.sh'
