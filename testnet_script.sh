@@ -137,11 +137,12 @@ Type=forking
 ExecStart=$COIN_PATH/$COIN_DAEMON -daemon -conf=~/.zelcash/$CONFIG_FILE -datadir=~/.zelcash/
 ExecStop=-$COIN_PATH/$COIN_CLI -conf=~/.zelcash/$CONFIG_FILE -datadir=~/.zelcash stop
 Restart=always
+Restartsec=5
 PrivateTmp=true
 TimeoutStopSec=60s
-TimeoutStartSec=10s
+TimeoutStartSec=5s
 StartLimitInterval=120s
-StartLimitBurst=5
+StartLimitBurst=15
 [Install]
 WantedBy=multi-user.target
 EOF
