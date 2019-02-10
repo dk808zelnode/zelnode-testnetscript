@@ -60,7 +60,6 @@ sudo apt-get install autoconf -y
 sudo apt-get install automake -y
 sudo apt-get install unzip -y
 sudo apt-get install figlet toilet -y
-sudo apt-get install lolcat -y
 sudo apt-get update
 sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
 sudo apt-get install libminiupnpc-dev libzmq3-dev libevent-pthreads-2.0-5 -y
