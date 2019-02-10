@@ -18,7 +18,7 @@ USERNAME=$(whiptail --inputbox "Enter su username" 10 30 3>&1 1>&2 2>&3)
 
 YELLOW='\033[1;33m'
 NC='\033[0m'
-BLUE='\e[34m'
+PURPLE='\e[35m'
 STOP='\e[0m'
 
 FETCHPARAMS='https://raw.githubusercontent.com/dk808/zelnode_script/master/fetch-params.sh'
@@ -180,7 +180,7 @@ echo "Starting your ZELNODE with final details"
 
 sleep 10
 
-printf "${BLUE}"
+printf "${PURPLE}"
 figlet -t -k "WELCOME   TO   ZELNODES" 
 printf "${STOP}"
 
