@@ -161,8 +161,8 @@ sudo ufw allow $RPCPORT/tcp
 sudo ufw logging on
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
-sudo ufw enable
-sudo systemctl enable fail2ban -y >/dev/null 2>&1
+echo "y" | sudo ufw enable >/dev/null 2>&1
+sudo systemctl enable fail2ban >/dev/null 2>&1
 sudo systemctl start fail2ban >/dev/null 2>&1
 echo -e "${YELLOW}Basic security completed...${NC}"
 
@@ -182,8 +182,8 @@ figlet -t -k "WELCOME   TO   ZELNODES"
 printf "${STOP}"
 
 echo "============================================================================="
-echo -e " ${YELLOW}COPY THE IP ADDRESS BLINKING TO FINISH SETTING UP YOUR LOCAL WALLET"
-echo -e "ZN1 ${YELLOW}\e[5m$WANIP:${NC}\e[25m$PORT $zelnodeprivkey TxID OUTPUT"
+echo -e " ${YELLOW}COPY THE IP ADDRESS BLINKING TO FINISH SETTING UP YOUR LOCAL WALLET ${NC}"
+echo -e "ZN1 ${YELLOW}\e[5m$WANIP${NC}\e[25m:$PORT $zelnodeprivkey TxID OUTPUT"
 echo -e "COURTESY OF ${YELLOW}ALTTANK FAM ${NC}AND ${YELLOW}DK808 ${NC}"
 echo "============================================================================="
 sleep 1
