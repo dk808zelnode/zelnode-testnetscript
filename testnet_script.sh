@@ -183,7 +183,7 @@ printf "${STOP}"
 
 echo "============================================================================="
 echo " ${YELLOW}COPY THE IP ADDRESS:PORT TO FINISH SETTING UP YOUR LOCAL WALLET"
-echo -e "ZN1 ${YELLOW}\e[5m$WANIP:$PORT\[25m ${NC}$zelnodeprivkey TxID OUTPUT"
+echo -e "ZN1 ${YELLOW}\e[5m$WANIP:$PORT ${NC}\e[25m$zelnodeprivkey TxID OUTPUT"
 echo -e "COURTESY OF ${YELLOW}ALTTANK FAM ${NC}AND ${YELLOW}DK808"
 echo "============================================================================="
 sleep 1
