@@ -17,6 +17,7 @@ COIN_PATH='/usr/local/bin'
 USERNAME=$(whiptail --inputbox "Enter su username" 10 30 3>&1 1>&2 2>&3)
 
 YELLOW='\033[1;33m'
+GREEN='\e[92m'
 NC='\033[0m'
 PURPLE='\e[35m'
 STOP='\e[0m'
@@ -182,7 +183,7 @@ figlet -t -k "WELCOME   TO   ZELNODES"
 printf "${STOP}"
 
 echo "============================================================================="
-echo -e " ${YELLOW}COPY THE IP ADDRESS BLINKING TO FINISH SETTING UP YOUR LOCAL WALLET ${NC}"
+echo -e "${GREEN}COPY THE IP ADDRESS BLINKING TO FINISH SETTING UP YOUR LOCAL WALLET ${NC}"
 echo -e "ZN1 ${YELLOW}\e[5m$WANIP${NC}\e[25m:$PORT $zelnodeprivkey TxID OUTPUT"
 echo -e "COURTESY OF ${YELLOW}ALTTANK FAM ${NC}AND ${YELLOW}DK808 ${NC}"
 echo "============================================================================="
