@@ -3,8 +3,8 @@
 COIN_NAME='ZELCASH' #no spaces
 
 #wallet information
-WALLET_DOWNLOAD='https://www.dropbox.com/s/raw/vle3slcwfsmrh3w/zelnodetestnet-linux.tar.gz'
-WALLET_TAR_FILE='zelnodetestnet-linux.tar.gz'
+WALLET_DOWNLOAD='https://zelcore.io/downloads/nodes/testnetv6/zelcash-binaries.tar.gz'
+WALLET_TAR_FILE='zelcash-binaries.tar.gz'
 ZIPTAR='unzip' #can be either unzip or tar -xvzf
 EXTRACT_DIR='' #not always necessary, can be blank if zip/tar file has no subdirectories
 CONFIG_FILE='zelcash.conf'
@@ -21,7 +21,7 @@ NC='\033[0m'
 PURPLE='\e[35m'
 STOP='\e[0m'
 
-FETCHPARAMS='https://raw.githubusercontent.com/dk808/zelnode_script/master/fetch-params.sh'
+FETCHPARAMS='https://raw.githubusercontent.com/zelcash/zelcash/master/zcutil/fetch-params.sh'
 
 #end of required details
 #
@@ -161,7 +161,7 @@ sudo ufw allow $RPCPORT/tcp
 sudo ufw logging on
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
-sudo ufw enable
+sudo ufw enable -y
 sudo systemctl enable fail2ban >/dev/null 2>&1
 sudo systemctl start fail2ban >/dev/null 2>&1
 echo -e "${YELLOW}Basic security completed...${NC}"
@@ -183,7 +183,7 @@ printf "${STOP}"
 
 echo "============================================================================="
 echo " ${YELLOW}COPY THE IP ADDRESS:PORT TO FINISH SETTING UP YOUR LOCAL WALLET"
-echo -e "ZN1 ${YELLOW}\e[5m$WANIP:$PORT ${NC}\e[25m$zelnodeprivkey TxID OUTPUT"
-echo -e "COURTESY OF ${YELLOW}ALTTANK FAM ${NC}AND ${YELLOW}DK808"
+echo -e "ZN1 ${YELLOW}\e[5m$WANIP:${NC}\e[25m$PORT $zelnodeprivkey TxID OUTPUT"
+echo -e "COURTESY OF ${YELLOW}ALTTANK FAM ${NC}AND ${YELLOW}DK808 ${NC}"
 echo "============================================================================="
 sleep 1
