@@ -21,7 +21,6 @@ BLUE='\033[1;34m'
 GREEN='\033[1;32m'
 CYAN='\033[1;36m'
 NC='\033[0m'
-PURPLE='\e[35m'
 STOP='\e[0m'
 
 FETCHPARAMS='https://raw.githubusercontent.com/zelcash/zelcash/master/zcutil/fetch-params.sh'
@@ -179,7 +178,7 @@ echo -e "${BLUE}Starting your ZELNODE with final details${NC}"
 
 sleep 10
 
-printf "${PURPLE}"
+printf "${BLUE}"
 figlet -t -k "WELCOME   TO   ZELNODES" 
 printf "${STOP}"
 
