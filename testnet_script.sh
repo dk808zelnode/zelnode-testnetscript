@@ -18,7 +18,8 @@ USERNAME=$(whiptail --inputbox "Enter su username" 10 30 3>&1 1>&2 2>&3)
 
 YELLOW='\033[1;33m'
 BLUE='\033[1;34m'
-GREEN='\033[1;92m'
+GREEN='\033[1;32m'
+CYAN='\033[1;36m'
 NC='\033[0m'
 PURPLE='\e[35m'
 STOP='\e[0m'
@@ -184,8 +185,8 @@ figlet -t -k "WELCOME   TO   ZELNODES"
 printf "${STOP}"
 
 echo "============================================================================="
-echo -e "${GREEN}THE FOLLOWING LINE IS YOUR ZELNODE LINE FOR YOUR ZELNODE CONF FILE ${NC}"
-echo -e "ZN1 ${YELLOW}$WANIP:$PORT ${GREEN}$zelnodeprivkey ${NC}TxID OUTPUT"
+echo -e "${CYAN}THE FOLLOWING LINE IS YOUR ZELNODE LINE FOR YOUR ZELNODE CONF FILE ${NC}"
+echo -e "ZN1 ${YELLOW}$WANIP:$PORT ${BLUE}$zelnodeprivkey ${NC}TxID OUTPUT"
 echo -e "COURTESY OF ${GREEN}ALTTANK FAM ${NC}AND ${GREEN}DK808 ${NC}"
 echo "============================================================================="
 sleep 1
