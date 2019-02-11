@@ -12,12 +12,13 @@ RPCPORT=26124
 PORT=26125
 COIN_DAEMON='zelcashd'
 COIN_CLI='zelcash-cli'
-COIN_TX='zelcash-tx'
+#COIN_TX='zelcash-tx'
 COIN_PATH='/usr/local/bin'
 USERNAME=$(whiptail --inputbox "Enter su username" 10 30 3>&1 1>&2 2>&3)
 
 YELLOW='\033[1;33m'
-GREEN='\e[92m'
+BLUE='\033[1;34m'
+GREEN='\033[1;92m'
 NC='\033[0m'
 PURPLE='\e[35m'
 STOP='\e[0m'
@@ -29,9 +30,9 @@ FETCHPARAMS='https://raw.githubusercontent.com/zelcash/zelcash/master/zcutil/fet
 #
 #
 
-echo "=================================================================="
+echo -e "${YELLOW}=================================================================="
 echo "INSTALLING ZELNODE DEPENDENCIES"
-echo "=================================================================="
+echo -e "==================================================================${NC}"
 echo "Installing packages and updates..."
 sudo apt-get update -y
 sudo apt-get install software-properties-common -y
@@ -46,7 +47,7 @@ sudo apt-get install pwgen -y
 sudo apt-get install ufw -y
 sudo apt-get install dnsutils -y
 sudo apt-get install build-essential libtool autotools-dev pkg-config libssl-dev -y
-sudo apt-get install  libc6-dev m4 g++-multilib -y
+sudo apt-get install libc6-dev m4 g++-multilib -y
 sudo apt-get install autoconf libtool ncurses-dev unzip git python python-zmq -y
 sudo apt-get install zlib1g-dev wget curl bsdmainutils automake -y
 sudo apt-get install libboost-all-dev -y
@@ -61,7 +62,7 @@ sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
 sudo apt-get install libminiupnpc-dev libzmq3-dev libevent-pthreads-2.0-5 -y
 sudo apt-get install libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev -y
 sudo apt-get install libqrencode-dev bsdmainutils -y
-echo "Packages complete..."
+echo -e "${YELLOW}Packages complete...${NC}"
 
 WANIP=$(dig +short myip.opendns.com @resolver1.opendns.com)
 PASSWORD=`pwgen -1 20 -n`
@@ -70,7 +71,7 @@ if [ "x$PASSWORD" = "x" ]; then
 fi
 
 
-echo "Creating Conf File..."
+echo -e "${BLUE}Creating Conf File...${NC}"
 sudo mkdir ~/.zelcash
 sudo touch ~/.zelcash/$CONFIG_FILE
 echo "rpcuser=$COIN_NAME" >> ~/.zelcash/$CONFIG_FILE
@@ -97,25 +98,25 @@ echo "addnode=165.227.156.125" >> ~/.zelcash/$CONFIG_FILE
 echo "maxconnections=999" >> ~/.zelcash/$CONFIG_FILE
 
 #begin downloading wallet
-echo "Killing and removing all old instances of $COIN_NAME and Downloading new wallet..."
+echo -e "${BLUE}Killing and removing all old instances of $COIN_NAME and Downloading new wallet...${NC}"
 sudo killall $COIN_DAEMON > /dev/null 2>&1
 cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && sleep 2
 
 sudo wget -c $WALLET_DOWNLOAD -O - | sudo tar -xz
-sudo chmod +x $COIN_CLI $COIN_DAEMON $COIN_TX
+sudo chmod +x $COIN_CLI $COIN_DAEMON
 sudo chmod +× /usr/local/bin/zelcash*
 sudo rm -rf $WALLET_TAR_FILE
 cd
 #end downloading/cleaning up wallet
 
-echo "downloading chain params"
+echo -e "${BLUE}Downloading chain params...${NC}"
 wget $FETCHPARAMS
 sudo chmod +x fetch-params.sh
 sudo bash fetch-params.sh
-sudo chown -R $USERNAME /home/$USERNAME
-echo "Done fetching chain params"
+sudo chown -R $USERNAME:$USERNAME /home/$USERNAME
+echo -e "${YELLOW}Done fetching chain params${NC}"
 
-echo "Creating system service file...."
+echo -e "${BLUE}Creating system service file....${NC}"
  cat << EOF > /etc/systemd/system/$COIN_NAME.service
 [Unit]
 Description=$COIN_NAME service
@@ -144,17 +145,17 @@ sleep 3
 sudo systemctl start $COIN_NAME.service
 sudo systemctl enable $COIN_NAME.service >/dev/null 2>&1
 
-echo "Systemctl Complete...."
+echo -e "${YELLOW}Systemctl Complete....${NC}"
 
 echo "If you see *error* message, do not worry we are killing wallet again to make sure its dead"
 echo ""
-echo "=================================================================="
+echo -e "{YELLOW}=================================================================="
 echo "DO NOT CLOSE THIS WINDOW OR TRY TO FINISH THIS PROCESS "
 echo "PLEASE WAIT 2 MINUTES UNTIL YOU SEE THE RELOADING WALLET MESSAGE"
-echo "=================================================================="
+echo -e "==================================================================${NC}"
 echo ""
 
-echo "Configuring firewall..."
+echo -e "${BLUE}Configuring firewall and enabling fail2ban...${NC}"
 #add a firewall
 sudo ufw allow ssh/tcp
 sudo ufw allow $PORT/tcp
@@ -167,14 +168,14 @@ sudo systemctl enable fail2ban >/dev/null 2>&1
 sudo systemctl start fail2ban >/dev/null 2>&1
 echo -e "${YELLOW}Basic security completed...${NC}"
 
-echo "Restarting $COIN_NAME wallet with new configs, 30 seconds..."
+echo -e "${BLUE}Restarting $COIN_NAME wallet with new configs, 30 seconds...${NC}"
 $COIN_DAEMON -daemon
 sleep 30
 
-echo "Getting info..."
+echo -e "${BLUE}Getting info...${NC}"
 $COIN_CLI getinfo
 
-echo "Starting your ZELNODE with final details"
+echo -e "${BLUE}Starting your ZELNODE with final details${NC}"
 
 sleep 10
 
@@ -183,8 +184,8 @@ figlet -t -k "WELCOME   TO   ZELNODES"
 printf "${STOP}"
 
 echo "============================================================================="
-echo -e "${GREEN}COPY THE IP ADDRESS BLINKING TO FINISH SETTING UP YOUR LOCAL WALLET ${NC}"
-echo -e "ZN1 ${YELLOW}\e[5m$WANIP${NC}\e[25m:$PORT $zelnodeprivkey TxID OUTPUT"
-echo -e "COURTESY OF ${YELLOW}ALTTANK FAM ${NC}AND ${YELLOW}DK808 ${NC}"
+echo -e "${GREEN}THE FOLLOWING LINE IS YOUR ZELNODE LINE FOR YOUR ZELNODE CONF FILE ${NC}"
+echo -e "ZN1 ${YELLOW}$WANIP:$PORT ${GREEN}$zelnodeprivkey ${NC}TxID OUTPUT"
+echo -e "COURTESY OF ${GREEN}ALTTANK FAM ${NC}AND ${GREEN}DK808 ${NC}"
 echo "============================================================================="
 sleep 1
