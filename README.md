@@ -1,6 +1,6 @@
 # Zelnode Testnet Install Script
 
-This was tested on Ubuntu 16.04
+This was tested on Ubuntu 18.04
 Please choose the right requirements for the Zelnode Tier you will be in your risk not getting any rewards. 
 
 Highly recommend checking out https://vps.minershive.ca/ you could also reach out to jriggs28 ID#401050747241758723 for more info in Zel's discord.
