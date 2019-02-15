@@ -61,6 +61,8 @@ sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
 sudo apt-get install libminiupnpc-dev libzmq3-dev libevent-pthreads-2.0-5 -y
 sudo apt-get install libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev -y
 sudo apt-get install libqrencode-dev bsdmainutils -y
+curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.deb.sh | sudo bash
+sudo apt install sysbench -y
 echo -e "${YELLOW}Packages complete...${NC}"
 
 WANIP=$(dig +short myip.opendns.com @resolver1.opendns.com)
