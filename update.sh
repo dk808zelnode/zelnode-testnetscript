@@ -74,7 +74,7 @@ echo -e "\033[1;33mUpdating new wallet binaries...\033[0m"
 
 #Install zelcash files using APT
 wget -U Mozilla/5.0 $WALLET_DOWNLOAD
-unzip $WALLET_ZIP_FILE -d $COIN_PATH
+sudo unzip $WALLET_ZIP_FILE -d $COIN_PATH
 sudo chmod 755 /usr/local/bin/zelcash*
 sudo chown -R $USERNAME:$USERNAME /home/$USERNAME
 cd
