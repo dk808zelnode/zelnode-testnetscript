@@ -212,7 +212,7 @@ sudo killall $COIN_DAEMON > /dev/null 2>&1
 sudo rm /usr/local/bin/zelcash* > /dev/null 2>&1 && sleep 2
 sudo rm /usr/bin/zelcash* > /dev/null 2>&1 && sleep 2
 
-#Install zelcash files using APT
+#Installing bins
 wget -U Mozilla/5.0 $WALLET_DOWNLOAD
 unzip $WALLET_ZIP_FILE -d $COIN_PATH  
 sudo chmod 755 /usr/local/bin/zelcash*
@@ -237,11 +237,11 @@ echo -e "${YELLOW}Done fetching chain params.${NC}"
 
 #Downloading update script
 echo -e "${GREEN}Downloading update script for future updates...${NC}"
-wget https://raw.githubusercontent.com/ZelScripts/ZelNodeInstallv3/master/zelnodeupdate.sh && chmod +x zelnodeupdate.sh
+wget https://raw.githubusercontent.com/dk808zelnode/zelnode-testnetscript/master/update.sh && chmod +x update.sh
 
 #Downloading chown script and create cron job to run it every minute
 echo -e "${GREEN}Installing chown script to make sure working directory is owned by User...${NC}"
-wget https://raw.githubusercontent.com/ZelScripts/ZelNodeInstallv3/master/chown.sh && chmod +x chown.sh
+wget https://raw.githubusercontent.com/dk808zelnode/zelnode-testnetscript/master/chown.sh && chmod +x chown.sh
 echo -e "${GREEN}Creating cron job to run the chown script...${NC}"
 crontab -l > tempcron
 echo "* * * * * /home/$USERNAME/chown.sh >/dev/null 2>&1" >> tempcron
