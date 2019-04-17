@@ -72,12 +72,12 @@ countdown()
 #Suppressing password prompts for this user so zelnode can operate
 sudo echo -e "$(who -m | awk '{print $1;}') ALL=(ALL) NOPASSWD:ALL" | sudo EDITOR='tee -a' visudo
 clear
-echo -e '${YELLOW}===============================================================================${NC}'
-echo -e 'ZelNode Setup, v4.0'
-echo -e '${YELLOW}===============================================================================${NC}'
-echo -e '${BLUE}16 April 2019, by AltTank fam, dk808, Goose-Tech, Skyslayer, & Packetflow${NC}'
+echo -e "${YELLOW}==============================================================================="
+echo -e "ZelNode Setup, v5.0"
+echo -e "${YELLOW}===============================================================================${NC}"
+echo -e "${BLUE}16 April 2019, by AltTank fam, dk808, Goose-Tech, Skyslayer, & Packetflow${NC}"
 echo -e
-echo -e '${CYAN}Node setup starting, press [CTRL-C] to cancel.${NC}'
+echo -e "${CYAN}Node setup starting, press [CTRL-C] to cancel.${NC}"
 countdown "00:00:03"
 echo -e
 
