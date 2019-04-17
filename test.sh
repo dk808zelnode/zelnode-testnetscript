@@ -214,7 +214,7 @@ sudo rm /usr/bin/zelcash* > /dev/null 2>&1 && sleep 2
 
 #Installing bins
 wget -U Mozilla/5.0 $WALLET_DOWNLOAD
-unzip $WALLET_ZIP_FILE -d $COIN_PATH  
+sudo unzip $WALLET_ZIP_FILE -d $COIN_PATH  
 sudo chmod 755 /usr/local/bin/zelcash*
 rm -rf $WALLET_ZIP_FILE
 
